@@ -1,0 +1,1377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amarjeet Singh | Graphic Designer</title>
+  <style>
+/* ============================================================
+   Amarjeet Singh — Portfolio Stylesheet
+   Dark premium theme | Montserrat + Open Sans
+   ============================================================ */
+
+:root {
+  --bg-dark: #0b0b12;
+  --bg-section: #0f0f1a;
+  --bg-card: #14141f;
+  --bg-card-hover: #191926;
+  --border: rgba(255, 255, 255, 0.08);
+  --text: #e8e8ef;
+  --text-muted: #9a9aad;
+  --accent: #ffb400;
+  --accent-soft: rgba(255, 180, 0, 0.12);
+  --accent-grad: linear-gradient(135deg, #ffb400 0%, #ff7b00 100%);
+  --nav-h: 72px;
+  --radius: 14px;
+  --shadow: 0 10px 40px rgba(0, 0, 0, 0.45);
+  --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: var(--nav-h); }
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  background: var(--bg-dark);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, .nav-logo, .btn, .stat-num { font-family: 'Montserrat', sans-serif; }
+
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+img { max-width: 100%; }
+
+.container { width: min(1140px, 92%); margin: 0 auto; }
+.section { padding: 110px 0; }
+
+.accent {
+  background: var(--accent-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* ============ NAVBAR ============ */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  height: var(--nav-h);
+  display: flex;
+  align-items: center;
+  transition: var(--transition);
+  background: transparent;
+}
+.navbar.scrolled {
+  background: rgba(11, 11, 18, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+}
+
+.nav-container {
+  width: min(1200px, 94%);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.nav-logo { font-size: 1.5rem; font-weight: 800; letter-spacing: 0.5px; }
+.logo-first { color: var(--accent); }
+.logo-rest { color: var(--text); font-weight: 600; }
+
+.nav-links { display: flex; gap: 6px; }
+.nav-link {
+  position: relative;
+  padding: 8px 14px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  transition: var(--transition);
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 14px; right: 14px; bottom: 2px;
+  height: 2px;
+  background: var(--accent-grad);
+  border-radius: 2px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+.nav-link:hover, .nav-link.active { color: var(--text); }
+.nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); }
+
+.nav-cta {
+  padding: 10px 24px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #111;
+  background: var(--accent-grad);
+  transition: var(--transition);
+  box-shadow: 0 4px 18px rgba(255, 150, 0, 0.25);
+}
+.nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 26px rgba(255, 150, 0, 0.4); }
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+}
+.hamburger span {
+  width: 26px; height: 2.5px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: var(--transition);
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+
+/* ============ HERO ============ */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  padding: 120px 20px 80px;
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 0%, rgba(255, 180, 0, 0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 40% at 80% 90%, rgba(0, 120, 255, 0.06) 0%, transparent 70%),
+    var(--bg-dark);
+}
+
+.hero-bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, #000 30%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, #000 30%, transparent 100%);
+  pointer-events: none;
+}
+
+.hero-container { position: relative; max-width: 820px; animation: fadeUp 0.9s ease both; }
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 8px 20px;
+  border: 1px solid rgba(255, 180, 0, 0.35);
+  border-radius: 50px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+.badge-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #2ecc71;
+  box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.6);
+  animation: pulse 1.8s infinite;
+}
+
+.hero-title {
+  font-size: clamp(2.8rem, 8vw, 5.4rem);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -1px;
+  margin-bottom: 20px;
+}
+.title-line { display: block; }
+
+.hero-role {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(0.95rem, 2.4vw, 1.25rem);
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.role-divider { color: var(--accent); margin: 0 8px; }
+
+.hero-bio {
+  max-width: 600px;
+  margin: 0 auto 36px;
+  color: var(--text-muted);
+  font-size: 1.05rem;
+}
+
+.hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 56px; }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 32px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.btn-primary {
+  background: var(--accent-grad);
+  color: #111;
+  box-shadow: 0 6px 24px rgba(255, 150, 0, 0.3);
+}
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 34px rgba(255, 150, 0, 0.45); }
+.btn-outline {
+  border-color: var(--border);
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.03);
+}
+.btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-3px); }
+.btn-full { width: 100%; justify-content: center; }
+
+.hero-stats {
+  display: inline-flex;
+  align-items: center;
+  gap: 34px;
+  padding: 22px 44px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.02);
+}
+.stat-item { display: flex; flex-direction: column; }
+.stat-num {
+  font-size: 1.9rem;
+  font-weight: 800;
+  background: var(--accent-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.stat-label { font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1.2px; }
+.stat-divider { width: 1px; height: 42px; background: var(--border); }
+
+.hero-scroll-indicator {
+  position: absolute;
+  bottom: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.72rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.scroll-line {
+  width: 1px; height: 44px;
+  background: linear-gradient(to bottom, var(--accent), transparent);
+  animation: scrollLine 1.8s ease-in-out infinite;
+}
+
+/* ============ SECTION HEADER ============ */
+.section-header { text-align: center; margin-bottom: 64px; }
+.section-tag {
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.section-title { font-size: clamp(2rem, 5vw, 2.8rem); font-weight: 800; }
+.title-underline {
+  width: 64px; height: 4px;
+  margin: 18px auto 0;
+  border-radius: 4px;
+  background: var(--accent-grad);
+}
+.section-desc { max-width: 560px; margin: 18px auto 0; color: var(--text-muted); }
+
+/* ============ ABOUT ============ */
+.about { background: var(--bg-section); }
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.about-visual {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+}
+
+.about-avatar {
+  position: relative;
+  width: 240px; height: 240px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.avatar-initials {
+  width: 180px; height: 180px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 3.6rem;
+  font-weight: 900;
+  color: #111;
+  background: var(--accent-grad);
+  box-shadow: 0 16px 50px rgba(255, 150, 0, 0.3);
+  z-index: 2;
+}
+.avatar-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px dashed rgba(255, 180, 0, 0.45);
+}
+.ring-1 { width: 216px; height: 216px; animation: spin 24s linear infinite; }
+.ring-2 { width: 250px; height: 250px; border-color: rgba(255, 255, 255, 0.12); animation: spin 36s linear infinite reverse; }
+
+.about-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 26px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 0.92rem;
+  box-shadow: var(--shadow);
+}
+.card-icon { font-size: 1.4rem; color: var(--accent); }
+
+.about-greeting { font-size: 1.6rem; font-weight: 700; margin-bottom: 20px; }
+.about-text { color: var(--text-muted); margin-bottom: 16px; }
+.about-text strong { color: var(--text); }
+
+.about-highlights {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 28px;
+}
+.highlight-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+.highlight-item i { color: var(--accent); }
+
+/* ============ SKILLS ============ */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-bottom: 72px;
+}
+
+.skill-card {
+  padding: 36px 30px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+.skill-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--accent-grad);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+.skill-card:hover { transform: translateY(-8px); background: var(--bg-card-hover); border-color: rgba(255, 180, 0, 0.35); box-shadow: var(--shadow); }
+.skill-card:hover::before { transform: scaleX(1); }
+
+.skill-icon-wrap {
+  width: 72px; height: 72px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent-soft);
+  margin-bottom: 22px;
+}
+.skill-icon-img { width: 42px; height: 42px; }
+.skill-icon-fallback { font-size: 1.8rem; color: var(--accent); display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; }
+.coreldraw-icon { display: flex; }
+
+.skill-name { font-size: 1.15rem; font-weight: 700; margin-bottom: 10px; }
+.skill-desc { font-size: 0.92rem; color: var(--text-muted); margin-bottom: 24px; min-height: 88px; }
+
+.skill-bar-wrap { display: flex; align-items: center; gap: 14px; }
+.skill-bar {
+  flex: 1;
+  height: 7px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.07);
+  overflow: hidden;
+}
+.skill-bar-fill {
+  height: 100%;
+  width: 0;
+  border-radius: 10px;
+  background: var(--accent-grad);
+  transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.skill-percent { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.9rem; color: var(--accent); }
+
+.expertise-area { text-align: center; }
+.expertise-title { font-size: 1.35rem; font-weight: 700; margin-bottom: 26px; }
+.expertise-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; max-width: 820px; margin: 0 auto; }
+.tag {
+  padding: 9px 20px;
+  border: 1px solid var(--border);
+  border-radius: 50px;
+  background: var(--bg-card);
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  transition: var(--transition);
+}
+.tag:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+/* ============ PROJECTS ============ */
+.projects { background: var(--bg-section); }
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.project-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  overflow: hidden;
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+}
+.project-card:hover { transform: translateY(-8px); box-shadow: var(--shadow); border-color: rgba(255, 180, 0, 0.35); }
+
+.featured-card { border-color: rgba(255, 180, 0, 0.4); }
+
+.project-visual {
+  height: 190px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.project-visual::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+.project-visual-inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+.project-ico {
+  font-size: 3rem;
+  color: rgba(255, 255, 255, 0.9);
+  transition: var(--transition);
+}
+.project-card:hover .project-ico { transform: scale(1.12); color: var(--accent); }
+
+.project-type-badge {
+  padding: 5px 14px;
+  border-radius: 50px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+.featured-badge { background: var(--accent-grad); color: #111; border-color: transparent; }
+
+.project-body { padding: 26px; display: flex; flex-direction: column; flex: 1; }
+
+.project-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.project-name { font-size: 1.25rem; font-weight: 800; }
+.project-tag {
+  flex-shrink: 0;
+  padding: 4px 12px;
+  border-radius: 50px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 1px solid rgba(255, 180, 0, 0.3);
+}
+
+.project-desc { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px; flex: 1; }
+
+.project-tools { display: flex; flex-wrap: wrap; gap: 8px; }
+.tool-tag {
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+}
+
+/* ============ CONTACT ============ */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 56px;
+  align-items: start;
+}
+
+.contact-info-title { font-size: 1.4rem; font-weight: 700; margin-bottom: 14px; }
+.contact-info-text { color: var(--text-muted); margin-bottom: 34px; }
+
+.contact-details { display: flex; flex-direction: column; gap: 22px; margin-bottom: 34px; }
+.contact-item { display: flex; align-items: center; gap: 18px; }
+.contact-icon-wrap {
+  width: 52px; height: 52px;
+  flex-shrink: 0;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 1px solid rgba(255, 180, 0, 0.25);
+  transition: var(--transition);
+}
+.contact-item:hover .contact-icon-wrap { background: var(--accent-grad); color: #111; }
+.contact-text { display: flex; flex-direction: column; }
+.contact-label { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-muted); }
+.contact-value { font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 1rem; transition: var(--transition); }
+a.contact-value:hover { color: var(--accent); }
+
+.contact-social { display: flex; gap: 14px; }
+.social-btn {
+  width: 46px; height: 46px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  transition: var(--transition);
+}
+.social-btn:hover { background: var(--accent-grad); color: #111; border-color: transparent; transform: translateY(-3px); }
+
+.contact-form-wrap {
+  padding: 38px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  box-shadow: var(--shadow);
+}
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.form-group { margin-bottom: 20px; }
+.form-group label {
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin-bottom: 8px;
+}
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 13px 16px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text);
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.95rem;
+  transition: var(--transition);
+  resize: vertical;
+}
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: rgba(255, 255, 255, 0.28); }
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: rgba(255, 180, 0, 0.04);
+  box-shadow: 0 0 0 3px rgba(255, 180, 0, 0.12);
+}
+
+.form-success {
+  display: none;
+  align-items: center;
+  gap: 12px;
+  margin-top: 18px;
+  padding: 14px 18px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: #2ecc71;
+  background: rgba(46, 204, 113, 0.1);
+  border: 1px solid rgba(46, 204, 113, 0.3);
+}
+.form-success.show { display: flex; animation: fadeUp 0.5s ease both; }
+.form-success i { font-size: 1.2rem; }
+
+/* ============ FOOTER ============ */
+.footer {
+  border-top: 1px solid var(--border);
+  background: var(--bg-section);
+  padding: 44px 0;
+}
+.footer-container {
+  width: min(1140px, 92%);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+.footer-logo { font-size: 1.25rem; font-weight: 800; }
+.footer-tagline { font-size: 0.85rem; color: var(--text-muted); margin-top: 6px; }
+.footer-links { display: flex; gap: 22px; flex-wrap: wrap; }
+.footer-links a { font-size: 0.9rem; font-weight: 500; color: var(--text-muted); transition: var(--transition); }
+.footer-links a:hover { color: var(--accent); }
+.footer-right { text-align: right; }
+.footer-copy { font-size: 0.85rem; color: var(--text-muted); }
+.footer-made { font-size: 0.82rem; color: var(--text-muted); margin-top: 4px; }
+.footer-made i { color: #e74c3c; }
+
+/* ============ BACK TO TOP ============ */
+.back-to-top {
+  position: fixed;
+  bottom: 30px; right: 30px;
+  z-index: 900;
+  width: 48px; height: 48px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #111;
+  background: var(--accent-grad);
+  box-shadow: 0 6px 20px rgba(255, 150, 0, 0.35);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(16px);
+  transition: var(--transition);
+}
+.back-to-top.visible { opacity: 1; visibility: visible; transform: translateY(0); }
+.back-to-top:hover { transform: translateY(-4px); }
+
+/* ============ SCROLL REVEAL ============ */
+.reveal { opacity: 0; transform: translateY(36px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.revealed { opacity: 1; transform: translateY(0); }
+
+/* ============ ANIMATIONS ============ */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.55); }
+  70% { box-shadow: 0 0 0 9px rgba(46, 204, 113, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(46, 204, 113, 0); }
+}
+@keyframes scrollLine {
+  0%, 100% { opacity: 0.4; transform: scaleY(0.6); transform-origin: top; }
+  50% { opacity: 1; transform: scaleY(1); }
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 992px) {
+  .about-grid { grid-template-columns: 1fr; gap: 48px; }
+  .skills-grid { grid-template-columns: 1fr 1fr; }
+  .projects-grid { grid-template-columns: 1fr 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .skill-desc { min-height: 0; }
+}
+
+@media (max-width: 768px) {
+  .section { padding: 84px 0; }
+  .nav-links {
+    position: fixed;
+    top: var(--nav-h);
+    left: 0; right: 0;
+    flex-direction: column;
+    padding: 18px 24px 26px;
+    background: rgba(11, 11, 18, 0.97);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    transform: translateY(-130%);
+    transition: transform 0.4s ease;
+  }
+  .nav-links.open { transform: translateY(0); }
+  .nav-link { display: block; padding: 12px 8px; font-size: 1rem; }
+  .nav-cta { display: none; }
+  .hamburger { display: flex; }
+  .hero-stats { gap: 22px; padding: 18px 28px; }
+  .stat-num { font-size: 1.5rem; }
+  .skills-grid { grid-template-columns: 1fr; }
+  .projects-grid { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .about-highlights { grid-template-columns: 1fr; }
+  .footer-container { flex-direction: column; text-align: center; }
+  .footer-right { text-align: center; }
+  .footer-links { justify-content: center; }
+}
+
+</style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+  <style type="text/css">
+  .about-avatar {
+}
+  </style>
+</head>
+<body>
+
+  <!-- ========== NAVIGATION ========== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#home" class="nav-logo">
+        <span class="logo-first">A</span><span class="logo-rest">marjeet</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+      <a href="#contact" class="nav-cta">Hire Me</a>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero" id="home">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-container">
+      <div class="hero-badge">
+        <span class="badge-dot"></span> Available for Projects
+      </div>
+      <h1 class="hero-title">
+        <span class="title-line">S. Amarjeet</span>
+        <span class="title-line accent">Singh</span>
+      </h1>
+      <p class="hero-role">Graphic Designer <span class="role-divider">|</span> 2D Exhibition & Event Design</p>
+      <p class="hero-bio">
+        Crafting visually impactful exhibition spaces and event experiences that communicate brand stories with precision and creative excellence.
+      </p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">
+          <i class="fas fa-th-large"></i> View My Work
+        </a>
+        <a href="#contact" class="btn btn-outline">
+          <i class="fas fa-paper-plane"></i> Get In Touch
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-num">100+</span>
+          <span class="stat-label">Projects</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-num">3+</span>
+          <span class="stat-label">Tools</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-num">2D</span>
+          <span class="stat-label">Specialist</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll-indicator">
+      <span>Scroll Down</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ========== ABOUT ========== -->
+  <section class="about section" id="about">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-tag">Who I Am</p>
+        <h2 class="section-title">About <span class="accent">Me</span></h2>
+        <div class="title-underline"></div>
+      </div>
+      <div class="about-grid">
+        <div class="about-visual">
+          <div class="about-avatar">
+            <div class="avatar-initials"><img src="https://mir-s3-cdn-cf.behance.net/user/138/8c99302101702605.6ab7a547eef97.png" alt="" width="170"/></div>
+            <div class="avatar-ring ring-1"></div>
+            <div class="avatar-ring ring-2"></div>
+          </div>
+          <div class="about-card">
+            <i class="fas fa-palette card-icon"></i>
+            <span>Exhibition & Event Design Specialist</span>
+          </div>
+        </div>
+        <div class="about-content">
+          <h3 class="about-greeting">Hello! I'm Amarjeet Singh Nagi</h3>
+          <p class="about-text">
+            I am a passionate <strong>Graphic Designer</strong> with deep expertise in <strong>2D Exhibition and Event Design</strong>. My work revolves around creating visually compelling and strategically crafted graphics, layouts, and branding materials that elevate event spaces and exhibition experiences.
+          </p>
+          <p class="about-text">
+            Leveraging industry-standard tools including <strong>Adobe Photoshop</strong>, <strong>Adobe Illustrator</strong>, <strong>Adobe InDesign</strong>, and <strong>CorelDRAW</strong>, I transform abstract concepts into powerful visual narratives. From large-scale exhibition panels to detailed event branding, I deliver designs that captivate audiences and strengthen brand identity.
+          </p>
+          <p class="about-text">
+            My approach combines meticulous attention to detail with a strong understanding of visual hierarchy, colour theory, and spatial composition — essential elements for any successful exhibition or event.
+          </p>
+          <div class="about-highlights">
+            <div class="highlight-item">
+              <i class="fas fa-check-circle"></i>
+              <span>Exhibition Panel Design</span>
+            </div>
+            <div class="highlight-item">
+              <i class="fas fa-check-circle"></i>
+              <span>Event Branding & Identity</span>
+            </div>
+            <div class="highlight-item">
+              <i class="fas fa-check-circle"></i>
+              <span>2D Layout & Composition</span>
+            </div>
+            <div class="highlight-item">
+              <i class="fas fa-check-circle"></i>
+              <span>Print & Display Graphics</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SKILLS ========== -->
+  <section class="skills section" id="skills">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-tag">What I Use</p>
+        <h2 class="section-title">My <span class="accent">Skills</span></h2>
+        <div class="title-underline"></div>
+      </div>
+      <div class="skills-grid">
+
+        <div class="skill-card" data-aos="fade-up">
+          <div class="skill-icon-wrap">
+            <img src="https://www.adobe.com/cc-shared/assets/img/product-icons/svg/photoshop.svg" alt="Photoshop" class="skill-icon-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="skill-icon-fallback" style="display:none;"><i class="fas fa-image"></i></div>
+          </div>
+          <h3 class="skill-name">Adobe Photoshop</h3>
+          <p class="skill-desc">Advanced photo manipulation, composite visuals, banner creation and creative image editing for exhibitions and events.</p>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar" data-width="92">
+              <div class="skill-bar-fill"></div>
+            </div>
+            <span class="skill-percent">92%</span>
+          </div>
+        </div>
+
+        <div class="skill-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="skill-icon-wrap">
+            <img src="https://www.adobe.com/cc-shared/assets/img/product-icons/svg/illustrator.svg" alt="Illustrator" class="skill-icon-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="skill-icon-fallback" style="display:none;"><i class="fas fa-file-alt"></i></div>
+          </div>
+          <h3 class="skill-name">Adobe Illustrator</h3>
+          <p class="skill-desc">Professional layout design, multi-page publications, exhibition catalogues, brochures and corporate print materials.</p>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar" data-width="88">
+              <div class="skill-bar-fill"></div>
+            </div>
+            <span class="skill-percent">88%</span>
+          </div>
+        </div>
+
+        <div class="skill-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="skill-icon-wrap">
+			  <img src="https://www.coreldraw.com/static/cdgs/images/product-icons/corel/cdgs-small.png" alt="InDesign" class="skill-icon-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="skill-icon-fallback" style="display:none;"><i class="fas fa-vector-square"></i></div>
+          </div>
+          <h3 class="skill-name">CorelDRAW</h3>
+          <p class="skill-desc">Vector illustration, scalable exhibition graphics, event signage, large-format print design and branding artwork.</p>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar" data-width="85">
+              <div class="skill-bar-fill"></div>
+            </div>
+            <span class="skill-percent">85%</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="expertise-area">
+        <h3 class="expertise-title">Areas of Expertise</h3>
+        <div class="expertise-tags">
+          <span class="tag">Exhibition Design</span>
+          <span class="tag">Event Branding</span>
+          <span class="tag">Banner Design</span>
+          <span class="tag">2D Layout</span>
+          <span class="tag">Print Design</span>
+          <span class="tag">Brand Identity</span>
+          <span class="tag">Signage Design</span>
+          <span class="tag">Visual Communication</span>
+          <span class="tag">Stall Design Graphics</span>
+          <span class="tag">Corporate Design</span>
+		  <span class="tag">Logo Designer</span>
+		  <span class="tag">Photo Wedding Album Designer</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PROJECTS ========== -->
+  <section class="projects section" id="projects">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-tag">My Portfolio</p>
+        <h2 class="section-title">Featured <span class="accent">Projects</span></h2>
+        <div class="title-underline"></div>
+        <p class="section-desc">A selection of exhibition and event design projects that showcase my expertise in visual communication.</p>
+      </div>
+
+      <div class="projects-grid">
+
+        <!-- Project 1: Saras -->
+        <div class="project-card">
+          <div class="project-visual" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);">
+            <div class="project-visual-inner">
+              <i class="fas fa-store project-ico"></i>
+              <span class="project-type-badge">Exhibition Design</span>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-header">
+              <h3 class="project-name"><a href="https://www.behance.net/gallery/247341947/Saras">SARAS</a> </h3></a></h3>
+              <span class="project-tag">Exhibition</span>
+            </div>
+            <p class="project-desc">
+              Comprehensive 2D exhibition design project featuring visually engaging stall graphics, display panels, and layout compositions crafted to highlight the Saras brand identity and attract visitors effectively.
+            </p>
+            <div class="project-tools">
+              <span class="tool-tag">Photoshop</span>
+              <span class="tool-tag">Illustrator</span>
+              <span class="tool-tag">CorelDRAW</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2: BIRC -->
+        <div class="project-card">
+          <div class="project-visual" style="background: linear-gradient(135deg, #0d0d0d 0%, #1c1c1c 50%, #2d2d2d 100%);">
+            <div class="project-visual-inner">
+              <i class="fas fa-building project-ico"></i>
+              <span class="project-type-badge">Corporate Expo</span>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-header">
+             <h3 class="project-name"><a href="https://www.behance.net/gallery/247231829/BIRC">BIRC</a> </h3></a></h3>
+              <span class="project-tag">Corporate</span>
+            </div>
+            <p class="project-desc">
+              Professional corporate exhibition branding and layout design for BIRC. Developed detailed 2D graphics, signage, and informational panels aligned with corporate brand guidelines and exhibition standards.
+            </p>
+            <div class="project-tools">
+              <span class="tool-tag">Photoshop</span>
+              <span class="tool-tag">Illustrator</span>
+              <span class="tool-tag">CorelDRAW</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3: MedTech -->
+        <div class="project-card">
+          <div class="project-visual" style="background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #003366 100%);">
+            <div class="project-visual-inner">
+              <i class="fas fa-heartbeat project-ico"></i>
+              <span class="project-type-badge">MedTech Expo</span>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-header">
+              <h3 class="project-name">MedTech</h3>
+              <span class="project-tag">Healthcare</span>
+            </div>
+            <p class="project-desc">
+              Designed impactful and visually precise materials for a medical technology exhibition. Created clear, professional display panels and event graphics that effectively communicated complex medical product information.
+            </p>
+            <div class="project-tools">
+              <span class="tool-tag">Photoshop</span>
+              <span class="tool-tag">Illustrator</span>
+              <span class="tool-tag">Coral Draw</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 4: IEEMA -->
+        <div class="project-card">
+          <div class="project-visual" style="background: linear-gradient(135deg, #111111 0%, #1e1e1e 50%, #2c2c2c 100%);">
+            <div class="project-visual-inner">
+              <i class="fas fa-bolt project-ico"></i>
+              <span class="project-type-badge">Industry Expo</span>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-header">
+              <h3 class="project-name"><a href="https://www.behance.net/gallery/247233849/ieema">IEEMA</a> </h3></a></h3>
+              <span class="project-tag">Industry</span>
+            </div>
+            <p class="project-desc">
+              Exhibition design for IEEMA — the Indian Electrical & Electronics Manufacturers' Association. Produced high-impact 2D stall graphics, exhibition backdrops, and promotional materials for industry participants.
+            </p>
+            <div class="project-tools">
+              <span class="tool-tag">CorelDRAW</span>
+              <span class="tool-tag">Photoshop</span>
+              <span class="tool-tag">Illustrator</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 5: CII -->
+        <div class="project-card">
+          <div class="project-visual" style="background: linear-gradient(135deg, #0c0c0c 0%, #181818 50%, #252525 100%);">
+            <div class="project-visual-inner">
+              <i class="fas fa-industry project-ico"></i>
+              <span class="project-type-badge">Trade Show</span>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-header">
+              <h3 class="project-name"><a href="https://www.behance.net/gallery/247284695/CII">CII</a> </h3></a></h3>
+              <span class="project-tag">Trade & Industry</span>
+            </div>
+            <p class="project-desc">
+              Comprehensive design delivery for Confederation of Indian Industry (CII) events. Executed detailed 2D exhibition layouts, branded materials, and large-format graphics that reinforced CII's professional image.
+            </p>
+            <div class="project-tools">
+              <span class="tool-tag">Photoshop</span>
+              <span class="tool-tag">CorelDRAW</span>
+              <span class="tool-tag">Illustrator</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 6: Defence Pavilion -->
+        <div class="project-card featured-card">
+          <div class="project-visual" style="background: linear-gradient(135deg, #0a0a0a 0%, #111111 50%, #1a1a1a 100%);">
+            <div class="project-visual-inner">
+              <i class="fas fa-shield-alt project-ico"></i>
+              <span class="project-type-badge featured-badge">Featured</span>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-header">
+              <h3 class="project-name"><a href="https://www.behance.net/gallery/247232705/DEFENCE">DEFENCE</a> </h3></a></h3>
+              <span class="project-tag">Defence</span>
+            </div>
+            <p class="project-desc">
+              High-profile 2D design for a Defence Pavilion exhibition. Produced precision-level graphics, strategic layout designs, and impactful visual elements for a prestigious defence-sector exhibition — demanding the highest standards of accuracy and professionalism.
+            </p>
+            <div class="project-tools">
+              <span class="tool-tag">Photoshop</span>
+              <span class="tool-tag">Illustrator</span>
+              <span class="tool-tag">CorelDRAW</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CONTACT ========== -->
+  <section class="contact section" id="contact">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-tag">Let's Connect</p>
+        <h2 class="section-title">Get In <span class="accent">Touch</span></h2>
+        <div class="title-underline"></div>
+        <p class="section-desc">Have a project in mind? I'd love to hear about it. Let's create something exceptional together.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h3 class="contact-info-title">Contact Information</h3>
+          <p class="contact-info-text">
+            Available for freelance projects, full-time roles, and collaborations in exhibition and event design. Reach out and let's discuss your vision.
+          </p>
+
+          <div class="contact-details">
+            <div class="contact-item">
+              <div class="contact-icon-wrap">
+                <i class="fas fa-phone"></i>
+              </div>
+              <div class="contact-text">
+                <span class="contact-label">Phone</span>
+                <a href="tel:+919773678977" class="contact-value">+91 9773678977</a>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon-wrap">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="contact-text">
+                <span class="contact-label">Email</span>
+                <a href="mailto:pixelperfect2015@gmail.com" class="contact-value">pixelperfect2015@gmail.com</a>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon-wrap">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="contact-text">
+                <span class="contact-label">Specialty</span>
+                <span class="contact-value">Exhibition & Event Design</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-social">
+            <a href="mailto:pixelperfect2015@gmail.com" class="social-btn" title="Email">
+              <i class="fas fa-envelope"></i>
+            </a>
+            <a href="tel:+919773678977" class="social-btn" title="Phone">
+              <i class="fas fa-phone"></i>
+            </a>
+            <a href="https://www.behance.net/amarnagi1" class="social-btn" title="Behance">
+              <i class="fab fa-behance"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="contact-form-wrap">
+          <form class="contact-form" id="contactForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fname">Your Name</label>
+                <input type="text" id="fname" name="name" placeholder="Amar Nagi" required />
+              </div>
+              <div class="form-group">
+                <label for="femail">Your Email</label>
+                <input type="email" id="femail" name="email" placeholder="amar@example.com" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="fsubject">Subject</label>
+              <input type="text" id="fsubject" name="subject" placeholder="Exhibition Design Project" required />
+            </div>
+            <div class="form-group">
+              <label for="fmessage">Message</label>
+              <textarea id="fmessage" name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full" id="submitBtn">
+              <i class="fas fa-paper-plane"></i> Send Message
+            </button>
+            <div class="form-success" id="formSuccess">
+              <i class="fas fa-check-circle"></i>
+              <span>Thank you! Your message has been sent. I'll get back to you shortly.</span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <a href="#home" class="footer-logo">
+          <span class="logo-first">A</span><span class="logo-rest">marjeet</span>
+          <span class="logo-first">S</span><span class="logo-rest">ingh</span>
+        </a>
+        <p class="footer-tagline">Graphic Designer | 2D Exhibition & Event Design Specialist</p>
+      </div>
+      <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer-right">
+        <p class="footer-copy">&copy; 2026 Amarjeet Singh. All rights reserved.</p>
+        <p class="footer-made">Crafted with <i class="fas fa-heart"></i> &amp; creativity</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+	   <a href="#home" class="nav-logo">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <script>
+/* ============================================================
+   Amarjeet Singh — Portfolio Scripts
+   ============================================================ */
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  /* ---------- Sticky Navbar ---------- */
+  const navbar = document.getElementById('navbar');
+  const backToTop = document.getElementById('backToTop');
+
+  const onScroll = () => {
+    const y = window.scrollY;
+    navbar.classList.toggle('scrolled', y > 40);
+    backToTop.classList.toggle('visible', y > 500);
+    highlightActiveLink();
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* ---------- Mobile Menu ---------- */
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    navLinks.classList.toggle('open');
+  });
+
+  // Close menu when a link is clicked (mobile)
+  navLinks.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      navLinks.classList.remove('open');
+    });
+  });
+
+  /* ---------- Active Nav Link Highlight ---------- */
+  const sections = document.querySelectorAll('section[id]');
+  const links = document.querySelectorAll('.nav-link');
+
+  function highlightActiveLink() {
+    const scrollPos = window.scrollY + 120;
+    let currentId = 'home';
+    sections.forEach(section => {
+      if (section.offsetTop <= scrollPos) currentId = section.id;
+    });
+    links.forEach(link => {
+      link.classList.toggle('active', link.getAttribute('href') === `#${currentId}`);
+    });
+  }
+
+  /* ---------- Skill Bars Animation ---------- */
+  const skillBars = document.querySelectorAll('.skill-bar');
+  const barObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const fill = entry.target.querySelector('.skill-bar-fill');
+        fill.style.width = entry.target.dataset.width + '%';
+        barObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.4 });
+  skillBars.forEach(bar => barObserver.observe(bar));
+
+  /* ---------- Scroll Reveal for Cards ---------- */
+  const revealTargets = document.querySelectorAll(
+    '.skill-card, .project-card, .about-visual, .about-content, .contact-info, .contact-form-wrap, .expertise-area'
+  );
+  revealTargets.forEach(el => el.classList.add('reveal'));
+
+  const revealObserver = new IntersectionObserver(entries => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        // small stagger for grouped cards
+        setTimeout(() => entry.target.classList.add('revealed'), (i % 3) * 90);
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealTargets.forEach(el => revealObserver.observe(el));
+
+  /* ---------- Back to Top ---------- */
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  /* ---------- Contact Form ---------- */
+  const form = document.getElementById('contactForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const formSuccess = document.getElementById('formSuccess');
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+
+    // Simulate sending
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+
+    setTimeout(() => {
+      form.reset();
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+      formSuccess.classList.add('show');
+      setTimeout(() => formSuccess.classList.remove('show'), 6000);
+    }, 1200);
+  });
+
+});
+
+</script>
+</body>
+</html>
